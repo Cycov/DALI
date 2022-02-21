@@ -1,6 +1,12 @@
 #ifndef dali_h
 #define dali_h
 
+#ifdef RTOS
+#define delayMs(ms) rtosDelay(ms)
+#else
+#define delayMs(ms) delay(ms)
+#endif
+
 //timer scaling factors for different transmission speeds
 #define MAN_300 0
 #define MAN_600 1

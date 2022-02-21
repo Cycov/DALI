@@ -1,17 +1,12 @@
 #include "Dali.h"
 
-#define RTOS
-
 #ifdef RTOS
-#include <FreeRTOS_SAMD21.h>
+	#include <FreeRTOS_SAMD21.h>
 
-void rtosDelay(int ms)
-{
-	vTaskDelay( (ms * 1000) / portTICK_PERIOD_US );  
-}
-#define delayMs(ms) rtosDelay(ms)
-#else
-#define delayMs(ms) delay(ms)
+	void rtosDelay(int ms)
+	{
+		vTaskDelay( (ms * 1000) / portTICK_PERIOD_US );  
+	}
 #endif
 
 Dali::Dali() //constructor
