@@ -1,9 +1,13 @@
 #ifndef dali_h
 #define dali_h
 
+#define RTOS
+#define INVERT_MANCHESTER
+
 #ifdef RTOS
 #define delayMs(ms) rtosDelay(ms)
 #else
+#error pew
 #define delayMs(ms) delay(ms)
 #endif
 

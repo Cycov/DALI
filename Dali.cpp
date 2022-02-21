@@ -106,20 +106,33 @@ void Dali::sendBit(int b)
 
 void Dali::sendZero(void)
 {
-  digitalWrite(TxPin, HIGH);
-  delayMicroseconds(delay2);
-  digitalWrite(TxPin, LOW);
-  delayMicroseconds(delay1);
-
+	#ifdef INVERT_MANCHESTER
+		digitalWrite(TxPin, LOW);
+		delayMicroseconds(delay2);
+		digitalWrite(TxPin, HIGH);
+		delayMicroseconds(delay1);
+	#else
+		digitalWrite(TxPin, HIGH);
+		delayMicroseconds(delay2);
+		digitalWrite(TxPin, LOW);
+		delayMicroseconds(delay1);
+	#endif
 }
 
 
 void Dali::sendOne(void)
 {
-  digitalWrite(TxPin, LOW);
-  delayMicroseconds(delay2);
-  digitalWrite(TxPin, HIGH);
-  delayMicroseconds(delay1);
+	#ifdef INVERT_MANCHESTER
+		digitalWrite(TxPin, HIGH);
+		delayMicroseconds(delay2);
+		digitalWrite(TxPin, LOW);
+		delayMicroseconds(delay1);
+	#else
+		digitalWrite(TxPin, LOW);
+		delayMicroseconds(delay2);
+		digitalWrite(TxPin, HIGH);
+		delayMicroseconds(delay1);
+	#endif
 }
 
 
