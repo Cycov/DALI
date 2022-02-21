@@ -70,7 +70,7 @@ void Dali::transmit(uint8_t cmd1, uint8_t cmd2)  // transmit commands to DALI bu
     sendBit(1);
     sendByte(cmd1);
     sendByte(cmd2);
-    digitalWrite(TxPin, HIGH);
+    digitalWrite(TxPin, LOW);
 }
 
 void Dali::sendByte(uint8_t b) {
